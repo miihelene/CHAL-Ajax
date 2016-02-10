@@ -29,10 +29,10 @@
           $result = mysqli_query($connect,"SELECT * FROM ficheClient");
         ?>
         <label>
-          <select class="" name="nameClient">
+          <select id="my_select" class="" name="nameClient" onchange="selUser(this.value);">
             <?php
               while($data=mysqli_fetch_assoc($result)){
-                echo "<option value='0'>".$data['nom']." ".$data['prenom']."</option>";
+                echo "<option value='".$data['id']."'>".$data['nom']." ".$data['prenom']."</option>";
               }
             ?>
           </select>
@@ -51,35 +51,29 @@
               <th>Telephone</th>
             </tr>
           </thead>
-          <tbody>
-              <?php
-              DEFINE(SERVER,"localhost");
-              DEFINE(LOGIN,"adminsql");
-              DEFINE(MDP,"mdpsql");
-              DEFINE(BASE,"challengeAjax");
+          <tbody id="reponse">
 
-              $connect = mysqli_connect(SERVER, LOGIN, MDP, BASE) or die ("pb de connexion au serveur");
-
-              $result = mysqli_query($connect,"SELECT * FROM ficheClient");
-
-              //affichage du résultat de la requête de sélection
-              while($data=mysqli_fetch_assoc($result)){
-                echo"<tr><td>".$data['nom']."</td>";
-                echo"<td>".$data['prenom']."</td>";
-                echo"<td>".$data['age']."</td>";
-                echo"<td>".$data['ville']."</td>";
-                echo"<td>".$data['profession']."</td>";
-                echo"<td>".$data['email']."</td>";
-                echo"<td>".$data['telephone']."</td></tr>";
-              }
-
-              ?>
           </tbody>
         </table>
 
       </div>
     </div>
+    <script type="text/javascript">
+    function selUser(selUser){
 
+      xhr = new XMLHttpRequest();
+      xhr.open('POST', 'traitement.php', true);
+      var sendInfo="idUser="+selUser;      
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.send(sendInfo);
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200){
+          document.getElementById('reponse').innerHTML = xhr.responseText;
+        }
+      };
+    }
+
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
