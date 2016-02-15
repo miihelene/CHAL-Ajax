@@ -42,13 +42,13 @@
         <table>
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Prenom</th>
-              <th>Age</th>
-              <th>Ville</th>
-              <th>Profession</th>
-              <th>Email</th>
-              <th>Telephone</th>
+              <th class="array-name">Nom</th>
+              <th class="array-firstname">Prenom</th>
+              <th class="array-age">Age</th>
+              <th class="array-city">Ville</th>
+              <th class="array-job">Profession</th>
+              <th class="array-mail">Email</th>
+              <th class="array-phone">Telephone</th>
             </tr>
           </thead>
           <tbody id="reponse">
@@ -63,7 +63,7 @@
 
       xhr = new XMLHttpRequest();
       xhr.open('POST', 'traitement.php', true);
-      var sendInfo="idUser="+selUser;      
+      var sendInfo="idUser="+selUser;
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xhr.send(sendInfo);
       xhr.onreadystatechange = function() {

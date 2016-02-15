@@ -19,7 +19,9 @@ table{
 }
 
 th {
-  padding: 10px 30px;
+  width: 100px;
+  text-align: center;
+  padding: 5px 0;
   background: #22A7F0;
   color: #FFFFFF;
   font-family: sans-serif;
@@ -27,6 +29,10 @@ th {
   font-weight: 400;
 }
 
+
 td {
-  padding: 10px 30px;
+  width: 100px;
+  text-align: center;
+  padding: 5px 0;
+  overflow: scroll;
 }

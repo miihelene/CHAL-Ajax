@@ -3,7 +3,7 @@
 <?php
     DEFINE(SERVER,"localhost");
     DEFINE(LOGIN,"adminsql");
-    DEFINE(MDP,"mdpsql");
+    DEFINE(MDP,"------l");
     DEFINE(BASE,"challengeAjax");
 
     $connect = mysqli_connect(SERVER, LOGIN, MDP, BASE) or die ("pb de connexion au serveur");
